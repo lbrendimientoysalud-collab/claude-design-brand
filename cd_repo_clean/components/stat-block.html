@@ -1,0 +1,47 @@
+<!--
+  COMPONENT: Stat block
+  Number gigante en azul + linea + label en uppercase mono
+  Funciona sobre fondo gris, blanco o negro
+-->
+<style>
+  .cd-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; padding-top: 24px;
+    border-top: 1.5px solid currentColor;
+  }
+  .cd-stat__n {
+    font-family: var(--cd-font-display); font-weight: 900;
+    font-size: 96px; line-height: 1; color: var(--cd-blue);
+    letter-spacing: -.02em;
+  }
+  .cd-stat__line {
+    width: 32px; height: 1.5px; background: currentColor;
+    margin: 12px 0 10px;
+  }
+  .cd-stat__l {
+    font-family: var(--cd-font-mono); font-size: 11px;
+    letter-spacing: .2em; text-transform: uppercase;
+  }
+
+  /* Si el contenedor tiene fondo oscuro, las stats van en gris */
+  .cd-on-dark .cd-stat__n { color: var(--cd-blue); }
+  .cd-on-dark .cd-stat__l { color: var(--cd-gray); }
+</style>
+
+<section class="cd-stats">
+  <div>
+    <div class="cd-stat__n">120+</div>
+    <div class="cd-stat__line"></div>
+    <div class="cd-stat__l">Piezas diseñadas</div>
+  </div>
+  <div>
+    <div class="cd-stat__n">18</div>
+    <div class="cd-stat__line"></div>
+    <div class="cd-stat__l">Clientes deportivos</div>
+  </div>
+  <div>
+    <div class="cd-stat__n">+47%</div>
+    <div class="cd-stat__line"></div>
+    <div class="cd-stat__l">Engage medio IG</div>
+  </div>
+</section>

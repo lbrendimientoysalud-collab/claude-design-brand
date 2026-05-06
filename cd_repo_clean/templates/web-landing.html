@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Claude Design — Diseño visual para el deporte</title>
+<link rel="stylesheet" href="../tokens/colors.css" />
+<link rel="stylesheet" href="../tokens/typography.css" />
+<link rel="stylesheet" href="../tokens/spacing.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--cd-font-body); color: var(--cd-text);
+    background: var(--cd-bg); line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* ----------- NAV ----------- */
+  .nav { position: sticky; top: 0; z-index: 30;
+    background: rgba(232,233,236,.92); backdrop-filter: blur(10px);
+    border-bottom: var(--cd-border); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .logo { font-family: var(--cd-font-display); font-weight: 900; font-size: 32px; line-height: 1; letter-spacing: -.02em; }
+  .logo .dot { color: var(--cd-blue); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { font-size: 14px; font-weight: 500; transition: color .25s var(--cd-ease); }
+  .nav-links a:hover { color: var(--cd-blue); }
+  .btn { display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 22px; border-radius: 999px;
+    background: var(--cd-black); color: var(--cd-gray);
+    font-weight: 600; font-size: 14px;
+    transition: transform .25s var(--cd-ease), background .25s var(--cd-ease); }
+  .btn:hover { transform: translateY(-2px); background: var(--cd-blue); }
+  .btn .arrow { transition: transform .25s var(--cd-ease); }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  /* ----------- HERO ----------- */
+  .hero { padding: 80px 0 120px; position: relative; }
+  .hero .meta-row { display: flex; align-items: center; gap: 20px; margin-bottom: 28px; }
+  .hero .meta-row span:first-child { color: var(--cd-blue); }
+  .hero h1 {
+    font-family: var(--cd-font-display); font-weight: 900;
+    font-size: clamp(64px, 11vw, 196px); line-height: .88;
+    letter-spacing: -.015em; text-transform: uppercase; margin-bottom: 32px;
+  }
+  .hero h1 .blue { color: var(--cd-blue); }
+  .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr;
+    gap: 64px; align-items: end; margin-top: 24px; }
+  .hero-lede { font-size: 20px; max-width: 480px; color: var(--cd-text); }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; padding-top: 24px; border-top: 1px solid var(--cd-black); }
+  .stat .n {
+    font-family: var(--cd-font-display); font-weight: 900;
+    font-size: 64px; line-height: 1; color: var(--cd-blue); letter-spacing: -.02em;
+  }
+  .stat .l {
+    font-family: var(--cd-font-mono); font-size: 10px;
+    letter-spacing: .2em; color: var(--cd-text);
+    text-transform: uppercase; margin-top: 6px;
+  }
+  .scroll-cue { margin-top: 80px; display: flex; align-items: center; gap: 12px;
+    color: var(--cd-black); opacity: .5; font-family: var(--cd-font-mono);
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+  .scroll-cue::before { content: ""; width: 60px; height: 1px; background: var(--cd-black); }
+
+  /* corner marks technical */
+  .corner-mark { position: absolute; width: 16px; height: 16px;
+    border: 1.5px solid var(--cd-black); }
+  .corner-mark.tl { top: 16px; left: 16px; border-right: 0; border-bottom: 0; }
+  .corner-mark.tr { top: 16px; right: 16px; border-left: 0; border-bottom: 0; }
+  .corner-mark.bl { bottom: 16px; left: 16px; border-right: 0; border-top: 0; }
+  .corner-mark.br { bottom: 16px; right: 16px; border-left: 0; border-top: 0; }
+
+  /* ----------- MARQUEE ----------- */
+  .marquee { background: var(--cd-black); color: var(--cd-gray);
+    padding: 22px 0; overflow: hidden; }
+  .marquee-track { display: flex; gap: 56px; white-space: nowrap;
+    animation: scroll 38s linear infinite;
+    font-family: var(--cd-font-display); font-weight: 700;
+    font-size: 32px; letter-spacing: .03em; text-transform: uppercase; }
+  .marquee-track span { display: inline-flex; align-items: center; gap: 56px; }
+  .marquee-track span::after { content: "●"; color: var(--cd-blue); font-size: 14px; }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ----------- SECTIONS ----------- */
+  .section { padding: 120px 0; }
+  .section-head { display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 64px; margin-bottom: 64px; }
+  .section-head h2 {
+    font-family: var(--cd-font-display); font-weight: 900;
+    font-size: clamp(48px, 7vw, 110px); line-height: .92;
+    text-transform: uppercase; letter-spacing: -.01em;
+  }
+  .section-head .lede { align-self: end; font-size: 18px; max-width: 480px; }
+
+  /* SERVICIOS */
+  .services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .service { background: var(--cd-gray); border: 1px solid var(--cd-black);
+    padding: 28px 24px 32px; min-height: 320px;
+    position: relative; overflow: hidden;
+    transition: background .35s var(--cd-ease), color .35s var(--cd-ease); }
+  .service .num { font-family: var(--cd-font-mono); font-size: 11px;
+    color: rgba(0,0,0,.5); letter-spacing: .2em; }
+  .service h3 { font-family: var(--cd-font-display); font-weight: 900;
+    font-size: 36px; line-height: 1; text-transform: uppercase; margin-top: 28px;
+    letter-spacing: -.01em; }
+  .service p { margin-top: 16px; font-size: 14px; }
+  .service .pill { position: absolute; bottom: 20px; left: 24px;
+    font-family: var(--cd-font-mono); font-size: 11px; letter-spacing: .2em;
+    color: var(--cd-blue); text-transform: uppercase; }
+  .service:hover { background: var(--cd-blue); color: var(--cd-gray);
+    border-color: var(--cd-blue); }
+  .service:hover .num, .service:hover .pill { color: var(--cd-gray); }
+
+  /* PORTAFOLIO */
+  .work-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+  .work { aspect-ratio: 1/1.1; position: relative; overflow: hidden;
+    background: var(--cd-blue); display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 22px; color: var(--cd-gray); }
+  .work.dark { background: var(--cd-black); }
+  .work.deep { background: var(--cd-navy); }
+  .work .tag { font-family: var(--cd-font-mono); font-size: 10px;
+    letter-spacing: .2em; color: var(--cd-gray); position: absolute; top: 18px; left: 22px;
+    opacity: .8; }
+  .work h4 { font-family: var(--cd-font-display); font-weight: 900;
+    font-size: 30px; line-height: .95; text-transform: uppercase; letter-spacing: -.01em; }
+  .work .meta-line { font-family: var(--cd-font-mono); font-size: 10px;
+    letter-spacing: .2em; margin-top: 8px; opacity: .7; }
+  .work.span2 { grid-column: span 2; }
+  .work.row2 { grid-row: span 2; aspect-ratio: 1/2.2; }
+  .work .glyph { position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--cd-font-display); font-weight: 900;
+    color: rgba(255,255,255,.06);
+    font-size: clamp(120px, 18vw, 260px); line-height: 1; pointer-events: none; }
+
+  /* PROCESO */
+  .process { background: var(--cd-black); color: var(--cd-gray); padding: 120px 0; }
+  .process .section-head h2 { color: var(--cd-gray); }
+  .process .section-head .lede { color: var(--cd-gray); opacity: .8; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .step .n { font-family: var(--cd-font-display); font-weight: 900;
+    font-size: 88px; color: var(--cd-blue); line-height: 1; letter-spacing: -.02em; }
+  .step hr { border: 0; border-top: 1px solid var(--cd-gray); margin: 14px 0 16px; width: 80%; }
+  .step h4 { font-family: var(--cd-font-display); font-weight: 900;
+    font-size: 28px; text-transform: uppercase; letter-spacing: .02em; }
+  .step p { font-size: 14px; margin-top: 10px; opacity: .7; }
+
+  /* QUOTE */
+  .quote-section { background: var(--cd-blue); color: var(--cd-gray); padding: 140px 0; }
+  .quote-section blockquote { font-family: var(--cd-font-display); font-weight: 900;
+    font-size: clamp(40px, 5.6vw, 80px); line-height: 1.0; text-transform: uppercase;
+    max-width: 1100px; letter-spacing: -.01em; }
+  .quote-section .open { font-size: clamp(80px, 10vw, 160px); color: var(--cd-gray); line-height: .8; }
+  .quote-section em {
+    font-style: normal;
+    background: linear-gradient(transparent 65%, var(--cd-gray) 65%);
+    color: var(--cd-black);
+    padding: 0 .15em;
+  }
+  .quote-section .author { margin-top: 40px; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.4);
+    display: flex; gap: 64px; align-items: baseline; max-width: 600px; }
+  .quote-section .author-name { font-family: var(--cd-font-display); font-weight: 700;
+    font-size: 22px; text-transform: uppercase; letter-spacing: .04em; }
+  .quote-section .author-role { font-family: var(--cd-font-mono); font-size: 11px;
+    letter-spacing: .2em; color: var(--cd-gray); text-transform: uppercase; }
+
+  /* CTA */
+  .cta { padding: 160px 0 120px; }
+  .cta h2 { font-family: var(--cd-font-display); font-weight: 900;
+    font-size: clamp(80px, 14vw, 240px); line-height: .85; letter-spacing: -.02em; text-transform: uppercase; }
+  .cta h2 .blue { color: var(--cd-blue); }
+  .cta-grid { margin-top: 56px; display: grid; grid-template-columns: 1.3fr 1fr;
+    gap: 56px; align-items: end; padding-top: 32px; border-top: 1px solid var(--cd-black); }
+  .cta-form { display: grid; grid-template-columns: 1fr auto; gap: 12px;
+    background: var(--cd-black); padding: 8px; }
+  .cta-form input { background: transparent; border: 0; color: var(--cd-gray);
+    font-family: var(--cd-font-body); font-size: 16px; padding: 18px 16px;
+    outline: none; width: 100%; }
+  .cta-form input::placeholder { color: rgba(232,233,236,.45); }
+  .cta-form button { background: var(--cd-blue); color: var(--cd-gray); border: 0;
+    font-family: var(--cd-font-display); font-weight: 900; font-size: 18px;
+    text-transform: uppercase; letter-spacing: .04em;
+    padding: 0 28px; cursor: pointer;
+    transition: transform .25s var(--cd-ease); }
+  .cta-form button:hover { transform: translateX(4px); }
+  .contact-list { display: grid; gap: 18px; }
+  .contact-row { display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: baseline;
+    padding-bottom: 16px; border-bottom: var(--cd-border); }
+  .contact-row .k { font-family: var(--cd-font-mono); font-size: 11px;
+    letter-spacing: .2em; color: var(--cd-blue); text-transform: uppercase; }
+  .contact-row .v { font-family: var(--cd-font-display); font-weight: 700;
+    font-size: 28px; text-transform: uppercase; }
+
+  /* FOOTER */
+  footer { background: var(--cd-black); color: var(--cd-gray);
+    padding: 32px 0; }
+  .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    font-family: var(--cd-font-mono); font-size: 11px; letter-spacing: .2em;
+    text-transform: uppercase; }
+
+  /* RESPONSIVE */
+  @media (max-width: 920px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .section-head { grid-template-columns: 1fr; gap: 24px; }
+    .services { grid-template-columns: repeat(2, 1fr); }
+    .work-grid { grid-template-columns: repeat(2, 1fr); }
+    .work.span2 { grid-column: span 2; }
+    .work.row2 { grid-row: auto; aspect-ratio: 1/1.1; }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .cta-grid { grid-template-columns: 1fr; }
+    .nav-links a:not(.btn) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="cd-wrap nav-inner">
+    <a href="#" class="logo">CD<span class="dot">.</span></a>
+    <nav class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajo">Trabajo</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto" class="btn">Hablemos <span class="arrow">→</span></a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="cd-wrap" style="position: relative;">
+    <span class="corner-mark tl"></span>
+    <span class="corner-mark tr"></span>
+
+    <div class="meta-row">
+      <span class="cd-meta">● EN VIVO</span>
+      <span class="cd-meta">CLAUDE_DESIGN — STUDIO 01 — 2026</span>
+    </div>
+
+    <h1>Diseño visual<br/>para el <span class="blue">deporte.</span></h1>
+
+    <div class="hero-grid">
+      <p class="hero-lede">
+        Carruseles, identidad y web para clubes, atletas y marcas de
+        performance que compiten al máximo nivel. Diseño que entrena,
+        convierte y se queda.
+      </p>
+      <div class="hero-stats">
+        <div class="stat"><div class="n">120+</div><div class="l">Piezas</div></div>
+        <div class="stat"><div class="n">18</div><div class="l">Clientes</div></div>
+        <div class="stat"><div class="n">+47%</div><div class="l">Engage</div></div>
+      </div>
+    </div>
+
+    <div class="scroll-cue">SCROLL · SIGUE BAJANDO</div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>FÚTBOL</span><span>RUGBY</span><span>RUNNING</span>
+    <span>CICLISMO</span><span>PADEL</span><span>CROSSFIT</span>
+    <span>ARTES MARCIALES</span><span>NATACIÓN</span>
+    <span>FÚTBOL</span><span>RUGBY</span><span>RUNNING</span>
+    <span>CICLISMO</span><span>PADEL</span><span>CROSSFIT</span>
+    <span>ARTES MARCIALES</span><span>NATACIÓN</span>
+  </div>
+</div>
+
+<section class="section" id="servicios">
+  <div class="cd-wrap">
+    <div class="section-head">
+      <h2>Lo que<br/>hacemos.</h2>
+      <p class="lede cd-meta">Cuatro líneas, una sola dirección visual. Cada pieza está pensada para mover a un atleta, un club o una marca de rendimiento.</p>
+    </div>
+
+    <div class="services">
+      <article class="service">
+        <span class="num">01 / SERVICIO</span>
+        <h3>Carruseles<br/>Instagram</h3>
+        <p>Plantillas, posts y ediciones diseñadas para enseñar, enganchar y convertir. Listas para publicar.</p>
+        <span class="pill">→ DESDE 90 €</span>
+      </article>
+      <article class="service">
+        <span class="num">02 / SERVICIO</span>
+        <h3>Web<br/>Design</h3>
+        <p>Webs rápidas, claras y deportivas. Para que se entrene, se contrate y se vuelva.</p>
+        <span class="pill">→ DESDE 1 200 €</span>
+      </article>
+      <article class="service">
+        <span class="num">03 / SERVICIO</span>
+        <h3>Identidad<br/>Visual</h3>
+        <p>Logos, paletas y guías para clubes, atletas y marcas que duran más de una temporada.</p>
+        <span class="pill">→ DESDE 600 €</span>
+      </article>
+      <article class="service">
+        <span class="num">04 / SERVICIO</span>
+        <h3>Stories<br/>& Ads</h3>
+        <p>Piezas verticales para campañas de captación, lanzamientos y anuncios. Diseño + copy.</p>
+        <span class="pill">→ A MEDIDA</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="trabajo" style="padding-top: 0;">
+  <div class="cd-wrap">
+    <div class="section-head">
+      <h2>Trabajo<br/>seleccionado.</h2>
+      <p class="lede cd-meta">Una pequeña parte del backstage. Cada proyecto enseña algo concreto del rendimiento — diseño que comunica, no decora.</p>
+    </div>
+
+    <div class="work-grid">
+      <article class="work span2 row2">
+        <span class="tag">01 · CAMPAÑA</span>
+        <span class="glyph">CAMP</span>
+        <h4>Winter Camp<br/>2026</h4>
+        <span class="meta-line">FÚTBOL BASE · CARTEL + CARRUSEL</span>
+      </article>
+      <article class="work dark">
+        <span class="tag">02 · IDENTIDAD</span>
+        <span class="glyph">AG</span>
+        <h4>Álvaro<br/>García</h4>
+        <span class="meta-line">FUTBOLISTA · BRANDING</span>
+      </article>
+      <article class="work deep">
+        <span class="tag">03 · SOCIAL</span>
+        <span class="glyph">OFF</span>
+        <h4>Off Season<br/>Series</h4>
+        <span class="meta-line">REELS + CARRUSELES</span>
+      </article>
+      <article class="work">
+        <span class="tag">04 · POST</span>
+        <span class="glyph">EDU</span>
+        <h4>Aductores<br/>de élite</h4>
+        <span class="meta-line">CARRUSEL EDUCATIVO</span>
+      </article>
+      <article class="work dark">
+        <span class="tag">05 · PRODUCTO</span>
+        <span class="glyph">VAL</span>
+        <h4>Valoración<br/>Deportiva</h4>
+        <span class="meta-line">LANDING + ADS</span>
+      </article>
+      <article class="work span2">
+        <span class="tag">06 · WEB</span>
+        <span class="glyph">LB</span>
+        <h4>LB Performance —<br/>Site Redesign</h4>
+        <span class="meta-line">FRONT + COPY · 2026</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="proceso">
+  <div class="cd-wrap">
+    <div class="section-head">
+      <h2>Cómo<br/>trabajamos.</h2>
+      <p class="lede" style="opacity:.7">Un método de cuatro pasos que mantiene cada proyecto enfocado, sin reuniones eternas ni ping-pong infinito de feedback.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><hr/><h4>Brief</h4><p>Entendemos atleta, club o marca. Una llamada y un formulario corto.</p></div>
+      <div class="step"><div class="n">02</div><hr/><h4>Concepto</h4><p>Definimos voz visual, dirección y referencias. Sin sorpresas.</p></div>
+      <div class="step"><div class="n">03</div><hr/><h4>Diseño</h4><p>Diseñamos las piezas listas para publicar. Dos rondas de feedback.</p></div>
+      <div class="step"><div class="n">04</div><hr/><h4>Entrega</h4><p>Plantillas + manual para que sigas tú con la misma línea visual.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="cd-wrap">
+    <div class="open">"</div>
+    <blockquote>
+      Pasamos de publicar lo que se nos<br/>
+      ocurría a publicar lo que la gente<br/>
+      <em>espera ver.</em>
+    </blockquote>
+    <div class="author">
+      <div>
+        <div class="author-name">Director Deportivo</div>
+        <div class="author-role">Club fútbol · 2.ª RFEF</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contacto">
+  <div class="cd-wrap">
+    <span class="cd-meta">→ EMPECEMOS</span>
+    <h2 style="margin-top: 16px;">¿Listo<br/>para subir<br/><span class="blue">de nivel?</span></h2>
+
+    <div class="cta-grid">
+      <form class="cta-form" onsubmit="return false;">
+        <input type="email" placeholder="tu@email.com" />
+        <button type="submit">Enviar →</button>
+      </form>
+      <div class="contact-list">
+        <div class="contact-row"><div class="k">Mail</div><div class="v">hola@claudedesign.es</div></div>
+        <div class="contact-row"><div class="k">Insta</div><div class="v">@claudedesign</div></div>
+        <div class="contact-row"><div class="k">Base</div><div class="v">España · Remoto</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="cd-wrap foot-inner">
+    <div>© 2026 Claude Design</div>
+    <div>Diseño visual para el deporte</div>
+    <div>v1.0 · Brand Book 01</div>
+  </div>
+</footer>
+
+</body>
+</html>

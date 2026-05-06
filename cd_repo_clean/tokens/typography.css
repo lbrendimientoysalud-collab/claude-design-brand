@@ -1,0 +1,87 @@
+/* ============================================================
+   Claude Design — Typography tokens
+   ------------------------------------------------------------
+   Three families. Strict hierarchy. Display always uppercase,
+   condensed, deportivo. Body never bigger than 20px in IG art.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@400;700;900&family=Instrument+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---------- Families ---------- */
+  /*  Display (titulares, números grandes, slogans)
+      Sustitutos universales: Impact, Bebas Neue, Anton, Oswald.  */
+  --cd-font-display: "Big Shoulders", "Impact", "Bebas Neue", "Arial Black", sans-serif;
+
+  /*  Body (texto largo, subtítulos, lede)
+      Sustitutos universales: Inter, Helvetica, Calibri.          */
+  --cd-font-body: "Instrument Sans", "Inter", "Helvetica Neue", system-ui, sans-serif;
+
+  /*  Mono (data, etiquetas técnicas, códigos, marcadores)        */
+  --cd-font-mono: "DM Mono", ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+  /* ---------- Weights ---------- */
+  --cd-w-regular:  400;
+  --cd-w-medium:   500;
+  --cd-w-bold:     700;
+  --cd-w-black:    900;
+
+  /* ---------- Type scale (IG = 1080x1080 / web = 16px base) ---------- */
+  /*  En IG carrusel los display llegan a 200pt; aquí dejo escala web. */
+  --cd-fs-mega:    clamp(64px, 12vw, 196px);   /* hero only */
+  --cd-fs-display: clamp(48px, 7vw, 110px);    /* section titles */
+  --cd-fs-h1:      clamp(40px, 5.5vw, 80px);
+  --cd-fs-h2:      clamp(32px, 4vw, 56px);
+  --cd-fs-h3:      clamp(24px, 2.5vw, 36px);
+  --cd-fs-h4:      20px;
+  --cd-fs-lede:    20px;
+  --cd-fs-body:    16px;
+  --cd-fs-small:   14px;
+  --cd-fs-meta:    11px;     /* mono, uppercase, tracking ample */
+
+  /* ---------- Line heights ---------- */
+  --cd-lh-tight:   .88;      /* display only */
+  --cd-lh-snug:    1.0;
+  --cd-lh-normal:  1.5;
+  --cd-lh-loose:   1.7;
+
+  /* ---------- Letter spacing ---------- */
+  --cd-ls-display: -.015em;
+  --cd-ls-meta:    .2em;     /* mono uppercase */
+  --cd-ls-tag:     .04em;
+}
+
+/* ============================================================
+   Type utility classes
+   ============================================================ */
+
+.cd-display {
+  font-family: var(--cd-font-display);
+  font-weight: var(--cd-w-black);
+  text-transform: uppercase;
+  line-height: var(--cd-lh-tight);
+  letter-spacing: var(--cd-ls-display);
+}
+
+.cd-body {
+  font-family: var(--cd-font-body);
+  font-weight: var(--cd-w-regular);
+  line-height: var(--cd-lh-normal);
+}
+
+.cd-meta {
+  font-family: var(--cd-font-mono);
+  font-size: var(--cd-fs-meta);
+  letter-spacing: var(--cd-ls-meta);
+  text-transform: uppercase;
+  font-weight: var(--cd-w-regular);
+}
+
+.cd-mega    { font-size: var(--cd-fs-mega); }
+.cd-h1      { font-size: var(--cd-fs-h1); }
+.cd-h2      { font-size: var(--cd-fs-h2); }
+.cd-h3      { font-size: var(--cd-fs-h3); }
+.cd-h4      { font-size: var(--cd-fs-h4); font-weight: var(--cd-w-bold); }
+.cd-lede    { font-size: var(--cd-fs-lede); }
+.cd-text    { font-size: var(--cd-fs-body); }
+.cd-small   { font-size: var(--cd-fs-small); }

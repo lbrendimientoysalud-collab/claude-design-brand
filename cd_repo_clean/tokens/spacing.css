@@ -1,0 +1,70 @@
+/* ============================================================
+   Claude Design — Spacing, layout & motion tokens
+   ============================================================ */
+
+:root {
+  /* ---------- Space scale (8pt-ish) ---------- */
+  --cd-s-1:   4px;
+  --cd-s-2:   8px;
+  --cd-s-3:  12px;
+  --cd-s-4:  16px;
+  --cd-s-5:  24px;
+  --cd-s-6:  32px;
+  --cd-s-7:  48px;
+  --cd-s-8:  64px;
+  --cd-s-9:  96px;
+  --cd-s-10: 128px;
+
+  /* ---------- Section padding ---------- */
+  --cd-pad-section: 120px;
+  --cd-pad-tight:   72px;
+
+  /* ---------- Container ---------- */
+  --cd-container:        1320px;
+  --cd-container-narrow: 880px;
+  --cd-gutter:           32px;
+
+  /* ---------- Radius (mínimo, casi nada) ---------- */
+  --cd-r-0:  0;        /* default — formas duras, deportivas */
+  --cd-r-1:  2px;      /* cards */
+  --cd-r-pill: 999px;  /* botones pill */
+
+  /* ---------- Borders ---------- */
+  --cd-border:        1px solid var(--cd-line);
+  --cd-border-strong: 1.5px solid var(--cd-black);
+  --cd-border-onDark: 1px solid var(--cd-line-onDark);
+
+  /* ---------- Shadows (NO usar) ---------- */
+  /*  La marca rechaza sombras blandas. Si se necesita profundidad,
+      usar bloques de color planos o líneas duras.                */
+
+  /* ---------- Motion ---------- */
+  --cd-ease:      cubic-bezier(.2, .8, .2, 1);
+  --cd-dur-fast:  .18s;
+  --cd-dur-base:  .28s;
+  --cd-dur-slow:  .55s;
+}
+
+/* Container helper */
+.cd-wrap {
+  max-width: var(--cd-container);
+  margin: 0 auto;
+  padding: 0 var(--cd-gutter);
+}
+.cd-wrap-narrow {
+  max-width: var(--cd-container-narrow);
+  margin: 0 auto;
+  padding: 0 var(--cd-gutter);
+}
+.cd-section { padding: var(--cd-pad-section) 0; }
+
+/* Marcadores de esquina — sello visual recurrente de la marca */
+.cd-corner-mark {
+  position: absolute;
+  width: 16px; height: 16px;
+  border: 1.5px solid currentColor;
+}
+.cd-corner-mark.tl { top: 16px; left: 16px;  border-right: 0; border-bottom: 0; }
+.cd-corner-mark.tr { top: 16px; right: 16px; border-left: 0;  border-bottom: 0; }
+.cd-corner-mark.bl { bottom: 16px; left: 16px;  border-right: 0; border-top: 0; }
+.cd-corner-mark.br { bottom: 16px; right: 16px; border-left: 0;  border-top: 0; }

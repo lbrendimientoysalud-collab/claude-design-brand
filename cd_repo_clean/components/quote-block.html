@@ -1,0 +1,60 @@
+<!--
+  COMPONENT: Quote block
+  Cita grande con apertura tipo magazine. Va sobre fondo azul, negro o gris.
+-->
+<style>
+  .cd-quote { padding: 64px 0; }
+  .cd-quote__open {
+    font-family: var(--cd-font-display); font-weight: 900;
+    font-size: clamp(80px, 10vw, 160px); line-height: .8;
+    color: var(--cd-blue);
+  }
+  .cd-quote__body {
+    font-family: var(--cd-font-display); font-weight: 900;
+    font-size: clamp(40px, 5.6vw, 80px); line-height: 1.0;
+    text-transform: uppercase; letter-spacing: -.01em;
+    max-width: 1100px; margin-top: 16px;
+  }
+  .cd-quote__body em {
+    font-style: normal;
+    background: linear-gradient(transparent 65%, var(--cd-blue) 65%);
+    padding: 0 .15em;
+  }
+  .cd-quote__author {
+    margin-top: 40px; padding-top: 24px;
+    border-top: 1px solid currentColor;
+    display: flex; gap: 64px; align-items: baseline;
+    max-width: 600px;
+  }
+  .cd-quote__name {
+    font-family: var(--cd-font-display); font-weight: 700;
+    font-size: 22px; text-transform: uppercase; letter-spacing: .04em;
+  }
+  .cd-quote__role {
+    font-family: var(--cd-font-mono); font-size: 11px;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--cd-blue); margin-top: 4px;
+  }
+
+  /* Sobre fondo oscuro: la em pasa a destacar en gris */
+  .cd-on-dark .cd-quote__body em {
+    background: linear-gradient(transparent 65%, var(--cd-gray) 65%);
+    color: var(--cd-black);
+  }
+  .cd-on-dark .cd-quote__role { color: var(--cd-gray); }
+  .cd-on-dark .cd-quote__open { color: var(--cd-blue); }
+</style>
+
+<section class="cd-quote">
+  <div class="cd-quote__open">"</div>
+  <blockquote class="cd-quote__body">
+    Pasamos de publicar lo que se nos ocurría<br/>
+    a publicar lo que la gente <em>espera ver</em>.
+  </blockquote>
+  <div class="cd-quote__author">
+    <div>
+      <div class="cd-quote__name">Director Deportivo</div>
+      <div class="cd-quote__role">Club fútbol · 2.ª RFEF</div>
+    </div>
+  </div>
+</section>

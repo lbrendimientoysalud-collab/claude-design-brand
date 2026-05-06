@@ -1,0 +1,84 @@
+<!--
+  COMPONENT: Service card
+  Variants: light (gray bg) / dark (blue/black bg)
+  Used inside .cd-services grid (4 cols on desktop, 2 on mobile)
+-->
+<style>
+  .cd-services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  @media (max-width: 920px) { .cd-services { grid-template-columns: repeat(2, 1fr); } }
+
+  .cd-card {
+    background: var(--cd-gray); color: var(--cd-black);
+    border: 1px solid var(--cd-black);
+    padding: 28px 24px 32px; min-height: 320px;
+    position: relative; overflow: hidden;
+    transition: background var(--cd-dur-base) var(--cd-ease),
+                color var(--cd-dur-base) var(--cd-ease);
+  }
+  .cd-card__num {
+    font-family: var(--cd-font-mono); font-size: 11px;
+    letter-spacing: .2em; color: rgba(0,0,0,.5);
+    text-transform: uppercase;
+  }
+  .cd-card__title {
+    font-family: var(--cd-font-display); font-weight: 900;
+    font-size: 36px; line-height: 1; text-transform: uppercase;
+    margin: 28px 0 16px; letter-spacing: -.01em;
+  }
+  .cd-card__body {
+    font-size: 14px; line-height: 1.5;
+  }
+  .cd-card__pill {
+    position: absolute; bottom: 20px; left: 24px;
+    font-family: var(--cd-font-mono); font-size: 11px;
+    letter-spacing: .2em; color: var(--cd-blue);
+    text-transform: uppercase;
+  }
+  .cd-card:hover {
+    background: var(--cd-blue); color: var(--cd-gray);
+    border-color: var(--cd-blue);
+  }
+  .cd-card:hover .cd-card__num,
+  .cd-card:hover .cd-card__pill { color: var(--cd-gray); }
+
+  /* Variantes con fondo fijo */
+  .cd-card--dark { background: var(--cd-black); color: var(--cd-gray); border-color: var(--cd-black); }
+  .cd-card--dark .cd-card__num { color: rgba(232, 233, 236, .6); }
+  .cd-card--dark .cd-card__pill { color: var(--cd-gray); }
+  .cd-card--dark:hover { background: var(--cd-blue); border-color: var(--cd-blue); }
+
+  .cd-card--blue { background: var(--cd-blue); color: var(--cd-gray); border-color: var(--cd-blue); }
+  .cd-card--blue .cd-card__num { color: rgba(232, 233, 236, .8); }
+  .cd-card--blue .cd-card__pill { color: var(--cd-gray); }
+  .cd-card--blue:hover { background: var(--cd-black); border-color: var(--cd-black); }
+</style>
+
+<section class="cd-services">
+  <article class="cd-card">
+    <span class="cd-card__num">01 / SERVICIO</span>
+    <h3 class="cd-card__title">Carruseles<br/>Instagram</h3>
+    <p class="cd-card__body">Plantillas y posts diseñados para enseñar, enganchar y convertir.</p>
+    <span class="cd-card__pill">→ DESDE 90 €</span>
+  </article>
+
+  <article class="cd-card cd-card--dark">
+    <span class="cd-card__num">02 / SERVICIO</span>
+    <h3 class="cd-card__title">Web<br/>Design</h3>
+    <p class="cd-card__body">Webs rápidas, claras, deportivas. Para entrenar y contratar.</p>
+    <span class="cd-card__pill">→ DESDE 1 200 €</span>
+  </article>
+
+  <article class="cd-card cd-card--blue">
+    <span class="cd-card__num">03 / SERVICIO</span>
+    <h3 class="cd-card__title">Identidad<br/>Visual</h3>
+    <p class="cd-card__body">Logos, paletas y guías para clubes, atletas y marcas que duran.</p>
+    <span class="cd-card__pill">→ DESDE 600 €</span>
+  </article>
+
+  <article class="cd-card">
+    <span class="cd-card__num">04 / SERVICIO</span>
+    <h3 class="cd-card__title">Stories<br/>& Ads</h3>
+    <p class="cd-card__body">Piezas verticales para campañas y captación. Diseño + copy.</p>
+    <span class="cd-card__pill">→ A MEDIDA</span>
+  </article>
+</section>

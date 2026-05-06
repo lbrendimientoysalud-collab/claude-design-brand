@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>IG · Stat · Highlight</title>
+  <link rel="stylesheet" href="../tokens/colors.css" />
+  <link rel="stylesheet" href="../tokens/typography.css" />
+  <link rel="stylesheet" href="../tokens/spacing.css" />
+  <style>
+    body { background: #1d1d1d; margin: 0; padding: 32px; display: flex; justify-content: center; }
+    .cd-ig { width: 1080px; height: 1080px; background: var(--cd-black); color: var(--cd-gray);
+      font-family: var(--cd-font-body); position: relative; overflow: hidden; padding: 64px; }
+    .cd-ig__cm   { position: absolute; width: 22px; height: 22px; border: 2px solid currentColor; }
+    .cd-ig__cm.tl{ top: 32px; left: 32px; border-right: 0; border-bottom: 0; }
+    .cd-ig__cm.tr{ top: 32px; right: 32px; border-left: 0; border-bottom: 0; }
+    .cd-ig__cm.bl{ bottom: 32px; left: 32px; border-right: 0; border-top: 0; }
+    .cd-ig__cm.br{ bottom: 32px; right: 32px; border-left: 0; border-top: 0; }
+    .cd-ig__top { position: absolute; top: 64px; left: 64px; right: 64px;
+      display: flex; align-items: center; justify-content: space-between; }
+    .cd-ig__monogram { font-family: var(--cd-font-display); font-weight: 900; font-size: 36px; }
+    .cd-ig__code { font-family: var(--cd-font-mono); font-size: 14px; letter-spacing: .2em; text-transform: uppercase; }
+    .cd-ig__bottom { position: absolute; left: 64px; right: 64px; bottom: 64px;
+      padding-top: 18px; border-top: 1.5px solid currentColor;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--cd-font-mono); font-size: 13px; letter-spacing: .2em; text-transform: uppercase; }
+
+    .stat__lead {
+      position: absolute; top: 200px; left: 64px;
+      font-family: var(--cd-font-display); font-weight: 900;
+      font-size: 56px; line-height: 1; text-transform: uppercase;
+    }
+    .stat__big {
+      position: absolute; top: 230px; left: 64px; right: 64px;
+      font-family: var(--cd-font-display); font-weight: 900;
+      font-size: 480px; line-height: .9; color: var(--cd-blue);
+      letter-spacing: -.04em;
+    }
+    .stat__caption {
+      position: absolute; left: 64px; right: 64px; bottom: 220px;
+      font-family: var(--cd-font-display); font-weight: 900;
+      font-size: 44px; line-height: 1.05; text-transform: uppercase;
+      letter-spacing: -.01em;
+    }
+    .stat__caption small {
+      display: block; margin-top: 12px;
+      font-family: var(--cd-font-body); font-weight: 400;
+      font-size: 22px; text-transform: none; color: rgba(232, 233, 236, .8);
+    }
+    .stat__source {
+      position: absolute; left: 64px; bottom: 130px;
+      font-family: var(--cd-font-mono); font-size: 12px; letter-spacing: .2em;
+      text-transform: uppercase; color: rgba(232, 233, 236, .55);
+    }
+  </style>
+</head>
+<body>
+
+<div class="cd-ig">
+  <span class="cd-ig__cm tl"></span><span class="cd-ig__cm tr"></span>
+  <span class="cd-ig__cm bl"></span><span class="cd-ig__cm br"></span>
+
+  <div class="cd-ig__top">
+    <span class="cd-ig__monogram">CD</span>
+    <span class="cd-ig__code">03 / STAT · HIGHLIGHT</span>
+  </div>
+
+  <span class="stat__lead">El</span>
+  <div class="stat__big">83%</div>
+
+  <p class="stat__caption">
+    de las lesiones musculares
+    <small>Ocurren por falta de prevención específica</small>
+  </p>
+  <span class="stat__source">Fuente: BJSM · 2024</span>
+
+  <div class="cd-ig__bottom">
+    <span>CLAUDE DESIGN</span>
+    <span>03 / 08</span>
+  </div>
+</div>
+
+</body>
+</html>

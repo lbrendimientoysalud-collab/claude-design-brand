@@ -1,0 +1,39 @@
+<!--
+  COMPONENT: Button
+  Variants: primary (black bg), inverse (blue bg), ghost (outline)
+  Use: <a class="cd-btn cd-btn--primary">Hablemos →</a>
+-->
+<style>
+  .cd-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 26px; border-radius: var(--cd-r-pill);
+    font-family: var(--cd-font-body); font-weight: 600;
+    font-size: var(--cd-fs-small); letter-spacing: .02em;
+    text-decoration: none; cursor: pointer; border: 0;
+    transition: transform var(--cd-dur-base) var(--cd-ease),
+                background var(--cd-dur-base) var(--cd-ease),
+                color var(--cd-dur-base) var(--cd-ease);
+  }
+  .cd-btn:hover { transform: translateY(-2px); }
+  .cd-btn .arrow { transition: transform var(--cd-dur-base) var(--cd-ease); }
+  .cd-btn:hover .arrow { transform: translateX(4px); }
+
+  /* Primary — fondo negro, tipo gris */
+  .cd-btn--primary { background: var(--cd-black); color: var(--cd-gray); }
+  .cd-btn--primary:hover { background: var(--cd-blue); }
+
+  /* Inverse — fondo azul, tipo blanco */
+  .cd-btn--inverse { background: var(--cd-blue); color: var(--cd-white); }
+  .cd-btn--inverse:hover { background: var(--cd-black); }
+
+  /* Ghost — sólo borde */
+  .cd-btn--ghost {
+    background: transparent; color: var(--cd-black);
+    border: 1.5px solid var(--cd-black);
+  }
+  .cd-btn--ghost:hover { background: var(--cd-black); color: var(--cd-gray); }
+</style>
+
+<a href="#" class="cd-btn cd-btn--primary">Hablemos <span class="arrow">→</span></a>
+<a href="#" class="cd-btn cd-btn--inverse">Reservar plaza <span class="arrow">→</span></a>
+<a href="#" class="cd-btn cd-btn--ghost">Ver portafolio <span class="arrow">→</span></a>

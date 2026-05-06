@@ -1,0 +1,29 @@
+<!--
+  Claude Design — base wrapper para previsualizar componentes
+  Cualquier componente .html en /components/ extiende esto:
+    <link rel="stylesheet" href="../tokens/colors.css">
+    <link rel="stylesheet" href="../tokens/typography.css">
+    <link rel="stylesheet" href="../tokens/spacing.css">
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Claude Design — Component preview</title>
+  <link rel="stylesheet" href="../tokens/colors.css" />
+  <link rel="stylesheet" href="../tokens/typography.css" />
+  <link rel="stylesheet" href="../tokens/spacing.css" />
+  <style>
+    body { background: var(--cd-bg); color: var(--cd-text);
+           font-family: var(--cd-font-body); margin: 0;
+           padding: var(--cd-s-7); }
+    .preview-grid { display: grid; gap: var(--cd-s-6); max-width: 1100px; }
+  </style>
+</head>
+<body>
+  <main class="preview-grid">
+    <!--   PEGAR AQUÍ EL COMPONENTE A PREVISUALIZAR   -->
+  </main>
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* ============================================================
+   Claude Design — Color tokens
+   ------------------------------------------------------------
+   Brand colors. Use these CSS variables EVERYWHERE — never hard-code
+   a hex inside a component. Five colors. No accent neon.
+
+   Usage hierarchy (visual weight):
+     blue    : 50–60%   primary, dominante
+     gray    : 25–30%   superficie clara neutra
+     black   : 10–15%   fondos editoriales y remarques
+     navy    : 5–10%    fondos profundos puntuales
+     white   : tipo sobre oscuros
+
+   Combinations (only these — never invent new ones):
+     gray bg   +  black text  +  blue accents
+     blue bg   +  white text  +  gray details
+     navy bg   +  white text  +  blue/gray accents
+     black bg  +  white text  +  blue accents
+   ============================================================ */
+
+:root {
+  /* ---------- Brand core ---------- */
+  --cd-blue:   #1C40E0;   /* primary, royal/electric */
+  --cd-navy:   #0A1742;   /* deep background */
+  --cd-black:  #000000;   /* editorial backgrounds, remarques */
+  --cd-gray:   #E8E9EC;   /* light neutral surface */
+  --cd-white:  #FFFFFF;   /* pure, on dark surfaces only */
+
+  /* ---------- Semantic aliases ---------- */
+  --cd-bg:           var(--cd-gray);
+  --cd-bg-deep:      var(--cd-navy);
+  --cd-bg-strong:    var(--cd-black);
+  --cd-text:         var(--cd-black);
+  --cd-text-onDark:  var(--cd-gray);
+  --cd-link:         var(--cd-blue);
+  --cd-line:         rgba(0, 0, 0, .12);
+  --cd-line-onDark:  rgba(232, 233, 236, .25);
+
+  /* ---------- Tints (computed, sparingly) ---------- */
+  --cd-blue-12:  rgba(28, 64, 224, .12);
+  --cd-blue-25:  rgba(28, 64, 224, .25);
+  --cd-black-08: rgba(0, 0, 0, .08);
+  --cd-black-50: rgba(0, 0, 0, .50);
+}
+
+/* ============================================================
+   Utility classes — para que Claude Design pueda leerlas
+   y replicarlas como atajos de color.
+   ============================================================ */
+
+/* Foregrounds */
+.cd-fg-blue   { color: var(--cd-blue);   }
+.cd-fg-navy   { color: var(--cd-navy);   }
+.cd-fg-black  { color: var(--cd-black);  }
+.cd-fg-gray   { color: var(--cd-gray);   }
+.cd-fg-white  { color: var(--cd-white);  }
+
+/* Backgrounds */
+.cd-bg-blue   { background: var(--cd-blue);  color: var(--cd-gray);  }
+.cd-bg-navy   { background: var(--cd-navy);  color: var(--cd-gray);  }
+.cd-bg-black  { background: var(--cd-black); color: var(--cd-gray);  }
+.cd-bg-gray   { background: var(--cd-gray);  color: var(--cd-black); }
+.cd-bg-white  { background: var(--cd-white); color: var(--cd-black); }
+
+/* Highlight (subrayado deportivo) */
+.cd-highlight {
+  background: linear-gradient(transparent 65%, var(--cd-blue) 65%);
+  padding: 0 .15em;
+  color: inherit;
+}
+.cd-highlight-onDark {
+  background: linear-gradient(transparent 65%, var(--cd-gray) 65%);
+  color: var(--cd-black);
+  padding: 0 .15em;
+}

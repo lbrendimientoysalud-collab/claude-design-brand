@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>IG · Quote</title>
+  <link rel="stylesheet" href="../tokens/colors.css" />
+  <link rel="stylesheet" href="../tokens/typography.css" />
+  <link rel="stylesheet" href="../tokens/spacing.css" />
+  <style>
+    body { background: #1d1d1d; margin: 0; padding: 32px; display: flex; justify-content: center; }
+    .cd-ig { width: 1080px; height: 1080px; background: var(--cd-blue); color: var(--cd-gray);
+      font-family: var(--cd-font-body); position: relative; overflow: hidden; padding: 64px; }
+    .cd-ig__cm   { position: absolute; width: 22px; height: 22px; border: 2px solid currentColor; }
+    .cd-ig__cm.tl{ top: 32px; left: 32px; border-right: 0; border-bottom: 0; }
+    .cd-ig__cm.tr{ top: 32px; right: 32px; border-left: 0; border-bottom: 0; }
+    .cd-ig__cm.bl{ bottom: 32px; left: 32px; border-right: 0; border-top: 0; }
+    .cd-ig__cm.br{ bottom: 32px; right: 32px; border-left: 0; border-top: 0; }
+    .cd-ig__top { position: absolute; top: 64px; left: 64px; right: 64px;
+      display: flex; align-items: center; justify-content: space-between; }
+    .cd-ig__monogram { font-family: var(--cd-font-display); font-weight: 900; font-size: 36px; }
+    .cd-ig__code { font-family: var(--cd-font-mono); font-size: 14px; letter-spacing: .2em; text-transform: uppercase; }
+    .cd-ig__bottom { position: absolute; left: 64px; right: 64px; bottom: 64px;
+      padding-top: 18px; border-top: 1.5px solid currentColor;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--cd-font-mono); font-size: 13px; letter-spacing: .2em; text-transform: uppercase; }
+
+    .q__open {
+      position: absolute; top: 130px; left: 64px;
+      font-family: var(--cd-font-display); font-weight: 900;
+      font-size: 280px; line-height: .8; color: var(--cd-gray);
+    }
+    .q__body {
+      position: absolute; left: 64px; right: 64px; top: 380px;
+      font-family: var(--cd-font-display); font-weight: 900;
+      font-size: 96px; line-height: .98; text-transform: uppercase;
+      letter-spacing: -.01em;
+    }
+    .q__body em {
+      font-style: normal;
+      background: linear-gradient(transparent 65%, var(--cd-gray) 65%);
+      color: var(--cd-black);
+      padding: 0 .15em;
+    }
+    .q__author {
+      position: absolute; left: 64px; right: 64px; bottom: 200px;
+      padding-top: 18px; border-top: 1px solid var(--cd-gray);
+      max-width: 560px;
+    }
+    .q__name {
+      font-family: var(--cd-font-display); font-weight: 700;
+      font-size: 32px; text-transform: uppercase; letter-spacing: .04em;
+    }
+    .q__role {
+      font-family: var(--cd-font-mono); font-size: 14px;
+      letter-spacing: .2em; text-transform: uppercase; margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="cd-ig">
+  <span class="cd-ig__cm tl"></span><span class="cd-ig__cm tr"></span>
+  <span class="cd-ig__cm bl"></span><span class="cd-ig__cm br"></span>
+
+  <div class="cd-ig__top">
+    <span class="cd-ig__monogram">CD</span>
+    <span class="cd-ig__code">04 / QUOTE</span>
+  </div>
+
+  <div class="q__open">"</div>
+  <blockquote class="q__body">
+    El cuerpo no se rompe<br/>
+    por entrenar.<br/>
+    Se rompe <em>por entrenar mal</em>.
+  </blockquote>
+
+  <div class="q__author">
+    <div class="q__name">Luis Bañuelos</div>
+    <div class="q__role">Preparador físico · LB Performance</div>
+  </div>
+
+  <div class="cd-ig__bottom">
+    <span>CLAUDE DESIGN</span>
+    <span>04 / 08</span>
+  </div>
+</div>
+
+</body>
+</html>
